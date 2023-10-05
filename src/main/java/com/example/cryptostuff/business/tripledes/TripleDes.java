@@ -23,13 +23,6 @@ public class TripleDes {
     public static final Logger logger = LogManager.getLogger();
     static  String desNoPadding = "DES/CBC/NoPadding";
 
-    /*public static void main(String[] args) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        String test = operate("13131313131313131313131313131313",HexFormat.of().parseHex("0101010101010101"),"26262626262626262626262626262626",1,"CBC");
-        String test2 = operate("11848edc480b5dbf11848edc480b5dbf",HexFormat.of().parseHex("0101010101010101"),"26262626262626262626262626262626",0,"CBC");
-        logger.info(test);
-        logger.info(test2);
-    }*/
-
     public String operate(String data,String initialVector,String key,Integer indicator,String mode) throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         byte[] iv = HexFormat.of().parseHex(initialVector);
         byte[] initIv = new byte[8];

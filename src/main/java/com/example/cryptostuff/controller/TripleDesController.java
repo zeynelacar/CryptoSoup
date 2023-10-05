@@ -1,7 +1,6 @@
 package com.example.cryptostuff.controller;
 
-import com.example.cryptostuff.business.tripledes.TripleDes;
-import com.example.cryptostuff.dto.DecryptDto;
+import com.example.cryptostuff.dto.DecryptDesDto;
 import com.example.cryptostuff.service.TripleDesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,7 @@ public class TripleDesController {
     private final TripleDesService service;
 
     @PostMapping(value = "/decrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> tripleDesDecrypt(@Valid @RequestBody DecryptDto request ) throws InvalidAlgorithmParameterException,
+    public ResponseEntity<String> tripleDesDecrypt(@Valid @RequestBody DecryptDesDto request ) throws InvalidAlgorithmParameterException,
             NoSuchPaddingException, IllegalBlockSizeException, IOException,
             NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return new ResponseEntity<>(service.decrypt(request), HttpStatus.OK);

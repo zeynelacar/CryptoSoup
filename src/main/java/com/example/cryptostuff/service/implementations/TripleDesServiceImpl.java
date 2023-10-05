@@ -1,7 +1,7 @@
 package com.example.cryptostuff.service.implementations;
 
 import com.example.cryptostuff.business.tripledes.TripleDes;
-import com.example.cryptostuff.dto.DecryptDto;
+import com.example.cryptostuff.dto.DecryptDesDto;
 import com.example.cryptostuff.exception.UnsupportedPaddingException;
 import com.example.cryptostuff.service.TripleDesService;
 import lombok.RequiredArgsConstructor;
@@ -24,16 +24,17 @@ public class TripleDesServiceImpl implements TripleDesService {
     private final TripleDes tripleDes;
 
     @Override
-    public String decrypt(DecryptDto req) throws InvalidAlgorithmParameterException, NoSuchPaddingException,
+    public String decrypt(DecryptDesDto req) throws InvalidAlgorithmParameterException, NoSuchPaddingException,
             IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         if (!checkValidPadding(req.getPaddingMode())){
             throw new UnsupportedPaddingException("Padding mode not supported");
         }
         String iv = req.getInitialVector();
-        if (iv.isEmpty())
+        if (iv.length() < 16)
         {
-            iv = String.format("%16s",0).replace(' ','0');
-        }return tripleDes.operate(req.getPlainTextData(),iv,req.getSecretKey(),0,req.getPaddingMode());
+            iv = String.format("%16s",iv).replace(' ','0');
+        }
+        return tripleDes.operate(req.getPlainTextData(),iv,req.getSecretKey(),0,req.getPaddingMode());
     }
 
     private boolean checkValidPadding(String padding){

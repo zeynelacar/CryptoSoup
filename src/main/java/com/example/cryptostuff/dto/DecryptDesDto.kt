@@ -5,12 +5,13 @@ import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 
-data class DecryptDto (
+data class DecryptDesDto (
     @field:NotBlank
     @JsonProperty("plainTextData")
     val plainTextData : String,
 
     @JsonProperty("initialVector")
+    @field:Max(16)
     val initialVector : String,
 
     @field:NotBlank

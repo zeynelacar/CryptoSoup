@@ -3,17 +3,17 @@ package com.example.cryptostuff.dto
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.NotBlank
 
-data class ClearPinBlockGenerateDTO (
+data class ClearPinBlockGenerateDTO(
     @field:NotBlank
     @JsonProperty("cardNo")
-    val cardNo : String ,
+    val cardNo: String,
 
     @field:NotBlank
     @JsonProperty("clearPin")
-    val clearPin : String,
+    val clearPin: String,
 
     @field:NotBlank
     @JsonProperty("pinBlockFormat")
-    val pinBlockFormat : String
+    val pinBlockFormat: String
 
-    )
+)

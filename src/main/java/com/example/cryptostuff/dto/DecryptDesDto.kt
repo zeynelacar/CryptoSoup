@@ -5,20 +5,20 @@ import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 
-data class DecryptDesDto (
+data class DecryptDesDto(
     @field:NotBlank
     @JsonProperty("plainTextData")
-    val plainTextData : String,
+    val plainTextData: String,
 
     @JsonProperty("initialVector")
     @field:Max(16)
-    val initialVector : String,
+    val initialVector: String,
 
     @field:NotBlank
     @field:Min(32)
     @field:Max(32)
     @JsonProperty("secretKey")
-    val secretKey : String,
+    val secretKey: String,
 
     @field:NotBlank
     @JsonProperty("paddingMode")

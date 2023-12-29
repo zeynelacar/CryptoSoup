@@ -17,7 +17,7 @@ public class RSA {
     public static final BigInteger BIG_INT_BASE = new BigInteger(BYTE_BASE);
     public static final Logger logger = LogManager.getLogger();
 
-    public String crackRSAUnsafe(String cip,String number,Long modulus,String componentP, String componentQ) {
+    public String crackRSAUnsafe(String cip, String number, Long modulus, String componentP, String componentQ) {
         BigInteger cipher = new BigInteger(cip);
         BigInteger numVal = new BigInteger(number);
         BigInteger exponent = BigInteger.valueOf(modulus);
@@ -29,19 +29,19 @@ public class RSA {
         BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
 
         BigInteger d = exponent.modInverse(phi);
-        BigInteger m = cipher.modPow(d,numVal);
+        BigInteger m = cipher.modPow(d, numVal);
         return new String(bigIntToByteArray(m));
     }
 
 
-    public byte[] bigIntToByteArray (BigInteger value) {
+    public byte[] bigIntToByteArray(BigInteger value) {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         double z = Double.parseDouble(value.toString());
-        int p = (int) Math.floor(Math.log(z)/Math.log(Double.parseDouble(BYTE_BASE)));
+        int p = (int) Math.floor(Math.log(z) / Math.log(Double.parseDouble(BYTE_BASE)));
         int j = 0;
-        while (j<=p){
-            byte k=value.mod(BIG_INT_BASE).byteValue();
-            value=value.divide(BIG_INT_BASE);
+        while (j <= p) {
+            byte k = value.mod(BIG_INT_BASE).byteValue();
+            value = value.divide(BIG_INT_BASE);
             buffer.write(k);
             j++;
         }

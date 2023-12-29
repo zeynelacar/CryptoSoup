@@ -27,7 +27,7 @@ public class KeyController {
     private final KeyService keyService;
 
 
-    @GetMapping(value = "/generate/tripledes" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/generate/tripledes", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> generateTripleDesKey(@RequestBody Generate3DESKeyDTO req) throws NoSuchAlgorithmException {
         return new ResponseEntity<>(keyService.generate3DESKey(req), HttpStatus.OK);
     }

@@ -11,5 +11,5 @@ import java.security.NoSuchAlgorithmException;
 
 public interface AesService {
 
-    String encryptDecryptAes (EncryptDecryptAesDTO request, Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException;
+    String encryptDecryptAes(EncryptDecryptAesDTO request, Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException;
 }

@@ -27,8 +27,8 @@ public class TripleDesController {
 
     private final TripleDesService service;
 
-    @PostMapping(value = "/decrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> tripleDesDecrypt(@Valid @RequestBody DecryptDesDto request ) throws InvalidAlgorithmParameterException,
+    @PostMapping(value = "/decrypt", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> tripleDesDecrypt(@Valid @RequestBody DecryptDesDto request) throws InvalidAlgorithmParameterException,
             NoSuchPaddingException, IllegalBlockSizeException, IOException,
             NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return new ResponseEntity<>(service.decrypt(request), HttpStatus.OK);

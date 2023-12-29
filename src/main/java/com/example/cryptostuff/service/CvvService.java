@@ -15,4 +15,4 @@ public interface CvvService {
 
     public GenericResponse calculateCvv(CalculateCvvDTO req) throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IOException;
 
-    }
+}

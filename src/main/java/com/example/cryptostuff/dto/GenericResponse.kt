@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank
 data class GenericResponse(
     @field:NotBlank
     @JsonProperty("statusCode")
-    var statusCode : String,
+    var statusCode: String,
 
     @JsonProperty
-    var responseData : String
+    var responseData: String
 )

@@ -8,5 +8,4 @@ public interface KeyGeneratorBase {
     String generate(Short lengthType) throws NoSuchAlgorithmException;
 
 
-
 }

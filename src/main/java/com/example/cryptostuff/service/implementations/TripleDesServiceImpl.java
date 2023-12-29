@@ -26,18 +26,17 @@ public class TripleDesServiceImpl implements TripleDesService {
     @Override
     public String decrypt(DecryptDesDto req) throws InvalidAlgorithmParameterException, NoSuchPaddingException,
             IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        if (!checkValidPadding(req.getPaddingMode())){
+        if (!checkValidPadding(req.getPaddingMode())) {
             throw new UnsupportedModeException("Encryption mode not supported");
         }
         String iv = req.getInitialVector();
-        if (iv.length() < 16)
-        {
-            iv = String.format("%16s",iv).replace(' ','0');
+        if (iv.length() < 16) {
+            iv = String.format("%16s", iv).replace(' ', '0');
         }
-        return tripleDes.operate(req.getPlainTextData(),iv,req.getSecretKey(),0,req.getPaddingMode());
+        return tripleDes.operate(req.getPlainTextData(), iv, req.getSecretKey(), 0, req.getPaddingMode());
     }
 
-    private boolean checkValidPadding(String padding){
+    private boolean checkValidPadding(String padding) {
         return validModes.contains(padding);
     }
 }

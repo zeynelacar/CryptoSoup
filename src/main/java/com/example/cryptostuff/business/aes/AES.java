@@ -17,16 +17,16 @@ import java.util.List;
 @Component
 public class AES {
 
-    public String operate(String data,String initialVector,String key,Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public String operate(String data, String initialVector, String key, Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         byte[] iv = HexFormat.of().parseHex(initialVector);
         Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
         byte[] initialKey = HexFormat.of().parseHex(key);
-        SecretKey secret = new SecretKeySpec(initialKey,"AES");
+        SecretKey secret = new SecretKeySpec(initialKey, "AES");
         IvParameterSpec ivParam = new IvParameterSpec(iv);
         if (indicator == Cipher.ENCRYPT_MODE) {
             cipher.init(indicator, secret, ivParam);
         } else {
-            cipher.init(Cipher.DECRYPT_MODE,secret,ivParam);
+            cipher.init(Cipher.DECRYPT_MODE, secret, ivParam);
         }
         byte[] cipherData = cipher.doFinal(HexFormat.of().parseHex(data));
         return HexFormat.of().formatHex(cipherData).toUpperCase();

@@ -30,12 +30,12 @@ public class PinBlockController {
 
     private final PinBlockService pinBlockService;
 
-    @PostMapping(value = "/decrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/decrypt", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse> decrypt(@Valid @RequestBody EncPinBlockDecodeDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, IOException {
         return new ResponseEntity<>(pinBlockService.decodeEncryptedPinBlock(request), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/encrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/encrypt", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse> encrypt(@Valid @RequestBody EncPinBlockRequestDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, IOException {
         return new ResponseEntity<>(pinBlockService.createEncryptedPinBlock(request), HttpStatus.OK);
     }

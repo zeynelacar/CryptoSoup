@@ -20,4 +20,4 @@ public interface PinBlockService {
 
     public GenericResponse decodeEncryptedPinBlock(EncPinBlockDecodeDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, IOException;
 
-    }
+}

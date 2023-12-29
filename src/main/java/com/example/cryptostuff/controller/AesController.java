@@ -26,13 +26,13 @@ public class AesController {
 
     private final AesService aesService;
 
-    @PostMapping(value = "/decrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/decrypt", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> decrypt(@Valid @RequestBody EncryptDecryptAesDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        return new ResponseEntity<>(aesService.encryptDecryptAes(request,0), HttpStatus.OK);
+        return new ResponseEntity<>(aesService.encryptDecryptAes(request, 0), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/encrypt" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/encrypt", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> encrypt(@Valid @RequestBody EncryptDecryptAesDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        return new ResponseEntity<>(aesService.encryptDecryptAes(request,1), HttpStatus.OK);
+        return new ResponseEntity<>(aesService.encryptDecryptAes(request, 1), HttpStatus.OK);
     }
 }

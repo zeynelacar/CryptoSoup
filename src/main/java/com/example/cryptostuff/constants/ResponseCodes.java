@@ -20,9 +20,9 @@ public class ResponseCodes {
             new AbstractMap.SimpleEntry<String, String>(PIN_FORMAT_ERROR, "Pin Length Shorter than 4 or longer than 12"),
             new AbstractMap.SimpleEntry<String, String>(INVALID_ACCOUNT_NUMBER, "Given account is not valid"),
             new AbstractMap.SimpleEntry<String, String>(PIN_BLOCK_ERROR, "Pin Block does not contain valid values")
-            );
+    );
 
-    public static String getDescription(String statusCode){
+    public static String getDescription(String statusCode) {
         return descriptionMap.get(statusCode);
     }
 }

@@ -29,7 +29,7 @@ public class CvvController {
 
     private final CvvService cvvService;
 
-    @PostMapping(value = "/generateCvv" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/generateCvv", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse> create(@Valid @RequestBody CalculateCvvDTO request) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, IOException {
         return new ResponseEntity<>(cvvService.calculateCvv(request), HttpStatus.OK);
     }

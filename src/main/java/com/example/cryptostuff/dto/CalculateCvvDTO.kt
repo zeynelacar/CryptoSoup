@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class CalculateCvvDTO(
     @JsonProperty("cvvKey")
-    val cvvKey : String,
+    val cvvKey: String,
 
     @JsonProperty("cardNumber")
-    val cardNumber : String,
+    val cardNumber: String,
 
     @JsonProperty
-    val expiryDate : String,
+    val expiryDate: String,
 
     @JsonProperty
-    val serviceCode : String
+    val serviceCode: String
 )

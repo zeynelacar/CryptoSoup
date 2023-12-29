@@ -12,7 +12,7 @@ public class RSAServiceImpl implements RSAService {
 
     private final RSA rsa;
 
-    public String crackUnsafeRSA(DecryptRSAUnsafeDTO decryptRSA){
+    public String crackUnsafeRSA(DecryptRSAUnsafeDTO decryptRSA) {
         return null;
     }
 

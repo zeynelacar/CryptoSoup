@@ -14,13 +14,13 @@ public class AesKeyGenerator implements KeyGeneratorBase {
     @Override
     public String generate(Short lengthType) throws NoSuchAlgorithmException {
         int bitSize;
-        switch (lengthType){
+        switch (lengthType) {
             case 2 -> bitSize = 256;
             case 1 -> bitSize = 192;
             default -> bitSize = 128;
         }
         String rawKey = baseAction(bitSize);
-        return formatKey(rawKey,bitSize);
+        return formatKey(rawKey, bitSize);
     }
 
     private String baseAction(Integer bitSize) throws NoSuchAlgorithmException {
@@ -30,10 +30,10 @@ public class AesKeyGenerator implements KeyGeneratorBase {
         return HexFormat.of().formatHex(key.getEncoded());
     }
 
-    private String formatKey(String key,Integer bitSize){
+    private String formatKey(String key, Integer bitSize) {
         String formattedKey = key.toUpperCase();
         if (bitSize == 192)
-            formattedKey = formattedKey.substring(0,48);
+            formattedKey = formattedKey.substring(0, 48);
         return formattedKey;
 
     }

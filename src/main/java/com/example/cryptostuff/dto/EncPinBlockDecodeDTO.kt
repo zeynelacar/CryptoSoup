@@ -7,18 +7,18 @@ data class EncPinBlockDecodeDTO(
 
     @field:NotBlank
     @JsonProperty("cardNo")
-    val cardNo : String ,
+    val cardNo: String,
 
     @field:NotBlank
     @JsonProperty("pinBlock")
-    val pinBlock : String,
+    val pinBlock: String,
 
     @field:NotBlank
     @JsonProperty("pinBlockFormat")
-    val pinBlockFormat : String,
+    val pinBlockFormat: String,
 
     @field:NotBlank
     @JsonProperty("pinKey")
-    val pinKey : String
+    val pinKey: String
 
 )

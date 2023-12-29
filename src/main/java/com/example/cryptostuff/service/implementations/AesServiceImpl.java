@@ -24,19 +24,18 @@ public class AesServiceImpl implements AesService {
     private final AES aes;
 
     @Override
-    public String encryptDecryptAes(EncryptDecryptAesDTO request , Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        if (!checkValidMode(request.getEncryptionMode())){
+    public String encryptDecryptAes(EncryptDecryptAesDTO request, Integer indicator) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        if (!checkValidMode(request.getEncryptionMode())) {
             throw new UnsupportedModeException("Encryption mode not supported");
         }
         String iv = request.getInitialVector();
-        if (iv.length() < 32)
-        {
-            iv = String.format("%16s",iv).replace(' ','0');
+        if (iv.length() < 32) {
+            iv = String.format("%16s", iv).replace(' ', '0');
         }
-        return aes.operate(request.getPlainHexData(),iv, request.getSecretKey(), indicator);
+        return aes.operate(request.getPlainHexData(), iv, request.getSecretKey(), indicator);
     }
 
-    private boolean checkValidMode(String padding){
+    private boolean checkValidMode(String padding) {
         return validModes.contains(padding);
     }
 }

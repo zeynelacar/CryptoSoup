@@ -18,7 +18,7 @@ public class TripleDesKeyGenerator implements KeyGeneratorBase {
     public String generate(Short lengthType) throws NoSuchAlgorithmException {
         int bitSize = lengthType == 1 ? 168 : 112;
         String rawKey = baseAction(bitSize);
-        return formatKey(rawKey,bitSize);
+        return formatKey(rawKey, bitSize);
     }
 
     private String baseAction(Integer bitSize) throws NoSuchAlgorithmException {
@@ -28,10 +28,10 @@ public class TripleDesKeyGenerator implements KeyGeneratorBase {
         return HexFormat.of().formatHex(key.getEncoded());
     }
 
-    private String formatKey(String key,Integer bitSize){
+    private String formatKey(String key, Integer bitSize) {
         String formattedKey = key.toUpperCase();
         if (bitSize == 112)
-            formattedKey = formattedKey.substring(0,32);
+            formattedKey = formattedKey.substring(0, 32);
         return formattedKey;
 
     }

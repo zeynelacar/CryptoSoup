@@ -1,7 +1,7 @@
 package com.example.cryptostuff.businessTests;
 
-import com.example.cryptostuff.business.key.TripleDesKeyGenerator;
-import com.example.cryptostuff.dto.Generate3DESKeyDTO;
+import com.example.cryptostuff.business.key.implemetations.AesKeyGenerator;
+import com.example.cryptostuff.business.key.implemetations.TripleDesKeyGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,6 +18,9 @@ class KeyTest {
     @InjectMocks
     private TripleDesKeyGenerator tripleDesKeyGenerator;
 
+    @InjectMocks
+    private AesKeyGenerator aesKeyGenerator;
+
 
 
     @Test
@@ -32,5 +35,26 @@ class KeyTest {
         String res2 = tripleDesKeyGenerator.generate((short)1);
         assertNotNull(res2);
         assertEquals(48, res2.length());
+    }
+
+    @Test
+    void generateDoubleLengthAesKey() throws NoSuchAlgorithmException {
+        String res1 = aesKeyGenerator.generate((short)1);
+        assertNotNull(res1);
+        assertEquals(48, res1.length());
+    }
+
+    @Test
+    void generateTripleLengthAesKey() throws NoSuchAlgorithmException {
+        String res2 = aesKeyGenerator.generate((short)2);
+        assertNotNull(res2);
+        assertEquals(64, res2.length());
+    }
+
+    @Test
+    void generateSingleLengthAesKey() throws NoSuchAlgorithmException {
+        String res3 = aesKeyGenerator.generate((short)0);
+        assertNotNull(res3);
+        assertEquals(32,res3.length());
     }
 }

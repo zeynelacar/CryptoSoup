@@ -1,6 +1,6 @@
 package com.example.cryptostuff.service.implementations;
 
-import com.example.cryptostuff.business.key.TripleDesKeyGenerator;
+import com.example.cryptostuff.business.key.implemetations.TripleDesKeyGenerator;
 import com.example.cryptostuff.dto.Generate3DESKeyDTO;
 import com.example.cryptostuff.service.KeyService;
 import lombok.RequiredArgsConstructor;
